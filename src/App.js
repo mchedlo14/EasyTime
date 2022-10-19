@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef, useState } from 'react'
+import Stopwatch from './components/Stopwatch'
+import './app.css'
 
-function App() {
+const App = () => {
+  const [choose,setChoose] = useState(0)
+  const stopWatchRef = useRef(null);
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <div className='main-concept'>
+        <div className='menu-box'>
+          <div className='menu-item'>
+            <p className={choose === 0 ? 'choosed':'notchoose'} onClick={() => setChoose(0)}>Stopwatch</p>
+          </div>
+
+          <div className='menu-item'>
+            <p className={choose === 1 ? 'choosed':'notchoose'} onClick={() => setChoose(1)}>Countdown</p>
+          </div>
+
+          <div className='menu-item'>
+            <p className={choose === 2 ? 'choosed':'notchoose'} onClick={() => setChoose(2)}>Alarm</p>
+          </div>
+
+        </div>
+
+        <Stopwatch />
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
